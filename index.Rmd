@@ -8,9 +8,9 @@ date: "2024-03-26"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## [ABOUT ME](./tcfearn1999.github.io.Rproj/about-me)
+## [ABOUT ME](./tcfearn1999.github.io.Rproj/about-me) ##
 
-# **Tayler Fearn - Bioinformatician**
+# **Tayler Fearn - Bioinformatician** #
 
 ```{r, out.width="60%", echo=FALSE}
 knitr::include_graphics("./media/prof_portrait.jpg")
