@@ -41,7 +41,7 @@ library(stringr)
 library(reticulate)
 library(caret)
 np <- import("numpy")
-envir::import_from(dplyr, last)
+#envir::import_from(dplyr, last)
 ```
 
 The next couple of functions go through the two directories in the data_directory and process each file. On each file, they take the trial number, determine if it’s antagonistic or stochastic, get the resident input, donor output, sample number, and append it to a data frame. 
@@ -270,15 +270,27 @@ The results for this network were as follows after training it for 20 epochs:
 
 ### On Training Data:
 
+```{r  train_graph,echo=FALSE, message=FALSE}
+htmltools::includeHTML("./media/graph.html")
+```
 
+### On Testing Data
 
-### On Testing Data:
+```{r testing_data, echo=FALSE, message=TRUE}
+metrics <- c("accuracy", "f1_score", "loss", "precision", "recall")
+values <- c(0.499, 0.666, 0.693, 0.499, 0.499)
+df <- data.frame(metrics, values)
 
-    
+knitr::kable((df), "simple")
+
+```
+
 
 ## Discussion
 
-Discuss the results
+Overall, the model was able to predict the outcome 49% of the time on the training data. This indicates a large margin for improvement. Limitations of this porject include the training epochs which was set small compared to what is normally done. In addition to this the results were likely limited to due to optimizer selection and model architecture. Other architectures to try could be similar to GoogleNet or RESnet which have shown to be better preforming in some ways. In addition to this, the data could be prepared differently so as to be more evenly distributed amoung the various strengths of antagonism. My results don't indicate any overfiting however, that could change with the adjustment of epochs. In conclusion, my current model wasn't able to successfully preidct the outcome of microbial community processes, however, future iterations will look at adjust key parameters and architectures to deveplop a better predictive model.
+
+Note: Training and working with neural networks is far less documented on R than on python. In addition to this, becuase it still uses python in the background it just ends up being slower than running a network in python. 
 
 
 
